@@ -7,7 +7,7 @@
 	<artifactId>dropwizard-sundial</artifactId>
 	<version>0.7.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<description>Easy-as-pie scheduled jobs in dropwizard</description>
+	<description>Scheduled jobs in dropwizard</description>
 	<inceptionYear>2015</inceptionYear>
 
 	<organization>
