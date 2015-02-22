@@ -153,3 +153,8 @@ curl -X POST "http://localhost:9090/admin/tasks/addcronjobtrigger?TRIGGER_NAME=S
 Visit [Sundial](https://github.com/timmolter/Sundial) to find out more about the scheduler itself and [XDropWizard](https://github.com/timmolter/XDropWizard) to see a working example of a DropWizard app integrating Sundial via the `dropwizard-sundial` project.
 
 ![Screenshot of Dashboard](https://raw.githubusercontent.com/timmolter/XDropWizard/master/etc/xdropwizard.png)
+
+
+## Continuous Integration
+[![Build Status](https://travis-ci.org/timmolter/dropwizard-sundial.png?branch=master)](https://travis-ci.org/timmolter/dropwizard-sundial.png)  
+[Build History](https://travis-ci.org/timmolter/dropwizard-sundial/builds)  
