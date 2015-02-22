@@ -1,22 +1,14 @@
 language: java
-before_install: "git clone -b travis `git config --get remote.origin.url` target/travis"
-script: "
-if [ ${TRAVIS_PULL_REQUEST} = 'false' ];
-then
-    mvn clean deploy --settings target/travis/settings.xml;
-else
-    mvn clean verify --settings target/travis/settings.xml;
-fi"
-
+before_install: git clone -b travis `git config --get remote.origin.url` target/travis
+script: ' if [ ${TRAVIS_PULL_REQUEST} = ''false'' ]; then mvn clean deploy --settings
+  target/travis/settings.xml; else mvn clean verify --settings target/travis/settings.xml;
+  fi'
 jdk:
-  - openjdk7
-
-# whitelist
+- openjdk7
 branches:
   only:
-    - master
-
+  - master
 env:
   global:
-    - secure: "G7lqKoWyQNM404n6cfSG2ByJcbxfa6F/5pYfMjtKT30a8Mvcz3zl8e5Cqnb1Gta5JJotjUBrxZxWIGH80aK8qys5b9TUpzqsPyR/JZDGfET/+zsLzoMHJsC7b/L2eGGFPgueQ9HHUt6/Z+UwXJZcmyahrJKykhylA+UYyoCE9YU="
-    - secure: "Hb7u2kgN01HHS21sDozf7trqIABQA+CV7xwJbdW9+KJg9L4AuVyd3Lq4qSASsmKIKT41vutGTwjY6O/Z9bR2JvG+RuJ+WyRmw9HVTnE7d8/anpGTnJb6Sq6mgAjtvfar/Soxr8yg/nFOJZDG8JN8HKQF+M2DBRv/Cq1O6wOyrU8="
+  - secure: ZQU2OkS8DpYwBll52KdqDBdbF7RCpFYV+Nj3JqwAx3KFoYT7c42fjgyNKXWsttJOtc+vJL/i2zwn0GRmLAPSWKR2LMiYTH4i6mQwKb244ktydTFSoFQe1N3UVflmjqTn3Eq5D4mFiY0MO+PNjNXbejl2WA6aWopa8ANXbqJHFYk=
+  - secure: hGI6ryjh8QxxxZRY6Kvaao7hzJiTEBhLgAT3xZBV5tgD0SodwerPgprYjwJnKbdGyE55qtjzL1/MoN7OHHubJQ09NjqDtmlKDTO8E4nNR2An0REf/+Cg2bGpbucxV4bII9oY+hrmguNFmw8jaJ3rfamnnuPVrSgTyGLW4YuhFKc=

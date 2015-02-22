@@ -43,7 +43,7 @@
 	</scm>
 
 	<ciManagement>
-		<url>https://travis-ci.org/timmolter/Sundial</url>
+		<url>https://travis-ci.org/timmolter/dropwizard-sundial</url>
 	</ciManagement>
 
 	<dependencies>
