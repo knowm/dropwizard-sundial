@@ -137,7 +137,6 @@ If adding jobs and triggers this way, you should not use annotations.
 ```bash
 curl -X POST http://localhost:9090/admin/tasks/locksundialscheduler
 curl -X POST http://localhost:9090/admin/tasks/unlocksundialscheduler
-curl -X POST http://localhost:9090/admin/tasks/samplejob3?MyParam=56789
 curl -X POST "http://localhost:9090/admin/tasks/startjob?JOB_NAME=MyJob"
 curl -X POST "http://localhost:9090/admin/tasks/startjob?JOB_NAME=SampleJob3&MyParam=9999"
 curl -X POST "http://localhost:9090/admin/tasks/stopjob?JOB_NAME=SampleJob3"
