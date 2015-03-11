@@ -4,7 +4,7 @@
 	<name>dropwizard-sundial</name>
 	<groupId>com.xeiam</groupId>
 	<artifactId>dropwizard-sundial</artifactId>
-	<version>0.8.0.1-SNAPSHOT</version>
+	<version>0.8.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<description>Scheduled jobs in dropwizard</description>
 	<url>http://xeiam.com</url>
