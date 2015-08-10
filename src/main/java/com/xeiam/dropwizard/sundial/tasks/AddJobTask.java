@@ -1,7 +1,5 @@
 package com.xeiam.dropwizard.sundial.tasks;
 
-import io.dropwizard.servlets.tasks.Task;
-
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.xeiam.sundial.SundialJobScheduler;
+
+import io.dropwizard.servlets.tasks.Task;
 
 /**
  * @author timmolter
@@ -42,7 +42,7 @@ public class AddJobTask extends Task {
     String jobName = (String) parameters.get("JOB_NAME").toArray()[0];
     String jobClass = (String) parameters.get("JOB_CLASS").toArray()[0];
 
-    SundialJobScheduler.addJob(jobName, jobClass, params);
+    SundialJobScheduler.addJob(jobName, jobClass, params, false);
 
   }
 }
