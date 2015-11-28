@@ -1,4 +1,4 @@
-package com.xeiam.dropwizard.sundial.tasks;
+package org.knowm.dropwizard.sundial.tasks;
 
 import io.dropwizard.servlets.tasks.Task;
 
@@ -8,21 +8,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.ImmutableMultimap;
-import com.xeiam.sundial.SundialJobScheduler;
+import org.knowm.sundial.SundialJobScheduler;
 
 /**
  * @author timmolter
  */
-public class RemoveJobTask extends Task {
+public class StopJobTask extends Task {
 
-  private final Logger logger = LoggerFactory.getLogger(RemoveJobTask.class);
+  private final Logger logger = LoggerFactory.getLogger(StopJobTask.class);
 
   /**
    * Constructor
    */
-  public RemoveJobTask() {
+  public StopJobTask() {
 
-    super("removejob");
+    super("stopjob");
   }
 
   @Override
@@ -32,7 +32,7 @@ public class RemoveJobTask extends Task {
 
     String jobName = (String) parameters.get("JOB_NAME").toArray()[0];
 
-    SundialJobScheduler.removeJob(jobName);
+    SundialJobScheduler.stopJob(jobName);
 
   }
 }

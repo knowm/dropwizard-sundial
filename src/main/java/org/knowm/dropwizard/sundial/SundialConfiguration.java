@@ -1,4 +1,4 @@
-package com.xeiam.dropwizard.sundial;
+package org.knowm.dropwizard.sundial;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,4 +1,4 @@
-package com.xeiam.dropwizard.sundial.tasks;
+package org.knowm.dropwizard.sundial.tasks;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.ImmutableMultimap;
-import com.xeiam.sundial.SundialJobScheduler;
+import org.knowm.sundial.SundialJobScheduler;
 
 import io.dropwizard.servlets.tasks.Task;
 

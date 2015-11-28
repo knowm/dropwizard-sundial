@@ -1,4 +1,4 @@
-package com.xeiam.dropwizard.sundial.tasks;
+package org.knowm.dropwizard.sundial.tasks;
 
 import io.dropwizard.servlets.tasks.Task;
 
@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableMultimap;
-import com.xeiam.sundial.SundialJobScheduler;
+import org.knowm.sundial.SundialJobScheduler;
 
 /**
  * @author timmolter

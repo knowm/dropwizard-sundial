@@ -1,11 +1,11 @@
-package com.xeiam.dropwizard.sundial;
+package org.knowm.dropwizard.sundial;
 
 import io.dropwizard.Configuration;
 import io.dropwizard.ConfiguredBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
-import com.xeiam.sundial.ee.SundialInitializerListener;
+import org.knowm.sundial.ee.SundialInitializerListener;
 
 /**
  * @author timmolter
