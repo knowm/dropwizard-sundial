@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<name>dropwizard-sundial</name>
@@ -10,16 +11,16 @@
 	<url>http://knowm.org/open-source/</url>
 	<inceptionYear>2015</inceptionYear>
 
-    <organization>
-        <name>Knowm Inc.</name>
-        <url>http://knowm.org/open-source/</url>
-    </organization>
+	<organization>
+		<name>Knowm Inc.</name>
+		<url>http://knowm.org/open-source/</url>
+	</organization>
 
-    <developers>
-        <developer>
-            <name>Tim Molter</name>
-        </developer>
-    </developers>
+	<developers>
+		<developer>
+			<name>Tim Molter</name>
+		</developer>
+	</developers>
 
 	<licenses>
 		<license>
@@ -47,25 +48,25 @@
 	</ciManagement>
 
 	<dependencies>
-    
-        <dependency>
-            <groupId>io.dropwizard</groupId>
-            <artifactId>dropwizard-core</artifactId>
-            <version>0.9.1</version>
-        </dependency>
-    
-        <dependency>
-            <groupId>io.dropwizard</groupId>
-            <artifactId>dropwizard-lifecycle</artifactId>
-            <version>0.9.1</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.knowm</groupId>
-            <artifactId>sundial</artifactId>
-            <version>2.1.0</version>
-        </dependency>
-                
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-core</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-lifecycle</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.knowm</groupId>
+			<artifactId>sundial</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<distributionManagement>
@@ -181,6 +182,19 @@
 				<version>2.5.3</version>
 				<configuration>
 					<autoversionsubmodules>true</autoversionsubmodules>
+				</configuration>
+			</plugin>
+			<!-- for header in all .java files -->
+			<plugin>
+				<groupId>com.mycila.maven-license-plugin</groupId>
+				<artifactId>maven-license-plugin</artifactId>
+				<version>1.10.b1</version>
+				<configuration>
+					<header>NOTICE</header>
+					<aggregate>true</aggregate>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>
