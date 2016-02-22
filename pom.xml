@@ -5,7 +5,7 @@
 	<name>dropwizard-sundial</name>
 	<groupId>org.knowm</groupId>
 	<artifactId>dropwizard-sundial</artifactId>
-	<version>0.9.1.1-SNAPSHOT</version>
+	<version>0.9.2.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<description>Scheduled jobs in Dropwizard</description>
 	<url>http://knowm.org/open-source/</url>
@@ -52,13 +52,13 @@
 		<dependency>
 			<groupId>io.dropwizard</groupId>
 			<artifactId>dropwizard-core</artifactId>
-			<version>0.9.1</version>
+			<version>0.9.2</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.dropwizard</groupId>
 			<artifactId>dropwizard-lifecycle</artifactId>
-			<version>0.9.1</version>
+			<version>0.9.2</version>
 		</dependency>
 
 		<dependency>
@@ -129,7 +129,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-site-plugin</artifactId>
-						<version>3.4</version>
+						<version>3.5</version>
 						<configuration>
 							<reportPlugins>
 								<plugin>
@@ -154,7 +154,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
+				<version>3.5.1</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
@@ -166,7 +166,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>2.4</version>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
