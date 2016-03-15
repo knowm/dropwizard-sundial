@@ -14,7 +14,7 @@ Add the **dropwizard-sundial** library as a dependency to your `pom.xml` file:
 <dependency>
     <groupId>org.knowm</groupId>
     <artifactId>dropwizard-sundial</artifactId>
-    <version>0.8.1.0</version>
+    <version>0.9.1.0</version>
 </dependency>
 ```
 
