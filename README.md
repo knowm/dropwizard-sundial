@@ -2,6 +2,21 @@
 
 Scheduled jobs in [Dropwizard](https://github.com/dropwizard/dropwizard) using [Sundial](https://github.com/timmolter/Sundial), a quartz fork.
 
+## Note!!!
+
+Before version `1.0.0-rc2.0`, you'll need to add the following lines to your `Application`'s `run()` method. From the 1.0.0-rc2.0 release and onwards, it will be automatically configured, but before that you need to explicitly add all the tasks yourself! 
+
+```java
+environment.admin().addTask(new LockSundialSchedulerTask());
+environment.admin().addTask(new UnlockSundialSchedulerTask());
+environment.admin().addTask(new RemoveJobTriggerTask());
+environment.admin().addTask(new AddCronJobTriggerTask());
+environment.admin().addTask(new StartJobTask());
+environment.admin().addTask(new StopJobTask());
+environment.admin().addTask(new RemoveJobTask());
+environment.admin().addTask(new AddJobTask());
+```
+
 ## In a Nutshell
 
 Sundial makes adding scheduled jobs to your Java application a walk in the park. Simply define jobs, define triggers, and start the Sundial scheduler. **dropwizard-sundial** makes integrating and configuring the job scheduler into dropwizard a snap.

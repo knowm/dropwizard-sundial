@@ -16,12 +16,20 @@
  */
 package org.knowm.dropwizard.sundial;
 
+import org.knowm.dropwizard.sundial.tasks.AddCronJobTriggerTask;
+import org.knowm.dropwizard.sundial.tasks.AddJobTask;
+import org.knowm.dropwizard.sundial.tasks.LockSundialSchedulerTask;
+import org.knowm.dropwizard.sundial.tasks.RemoveJobTask;
+import org.knowm.dropwizard.sundial.tasks.RemoveJobTriggerTask;
+import org.knowm.dropwizard.sundial.tasks.StartJobTask;
+import org.knowm.dropwizard.sundial.tasks.StopJobTask;
+import org.knowm.dropwizard.sundial.tasks.UnlockSundialSchedulerTask;
+import org.knowm.sundial.ee.SundialInitializerListener;
+
 import io.dropwizard.Configuration;
 import io.dropwizard.ConfiguredBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-
-import org.knowm.sundial.ee.SundialInitializerListener;
 
 /**
  * @author timmolter
@@ -32,7 +40,6 @@ public abstract class SundialBundle<T extends Configuration> implements Configur
 
   @Override
   public void initialize(Bootstrap<?> bootstrap) {
-    // TODO Auto-generated method stub
 
   }
 
@@ -70,6 +77,14 @@ public abstract class SundialBundle<T extends Configuration> implements Configur
       environment.servlets().setInitParameter("annotated-jobs-package-name", sundialConfiguration.getAnnotatedJobsPackageName());
     }
 
+    environment.admin().addTask(new LockSundialSchedulerTask());
+    environment.admin().addTask(new UnlockSundialSchedulerTask());
+    environment.admin().addTask(new RemoveJobTriggerTask());
+    environment.admin().addTask(new AddCronJobTriggerTask());
+    environment.admin().addTask(new StartJobTask());
+    environment.admin().addTask(new StopJobTask());
+    environment.admin().addTask(new RemoveJobTask());
+    environment.admin().addTask(new AddJobTask());
   }
 
 }
