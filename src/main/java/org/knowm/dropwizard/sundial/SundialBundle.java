@@ -16,6 +16,7 @@
  */
 package org.knowm.dropwizard.sundial;
 
+import org.eclipse.jetty.server.Server;
 import org.knowm.dropwizard.sundial.tasks.AddCronJobTriggerTask;
 import org.knowm.dropwizard.sundial.tasks.AddJobTask;
 import org.knowm.dropwizard.sundial.tasks.LockSundialSchedulerTask;
@@ -24,10 +25,14 @@ import org.knowm.dropwizard.sundial.tasks.RemoveJobTriggerTask;
 import org.knowm.dropwizard.sundial.tasks.StartJobTask;
 import org.knowm.dropwizard.sundial.tasks.StopJobTask;
 import org.knowm.dropwizard.sundial.tasks.UnlockSundialSchedulerTask;
+import org.knowm.sundial.SundialJobScheduler;
 import org.knowm.sundial.ee.SundialInitializerListener;
+import org.quartz.exceptions.SchedulerException;
+import org.quartz.listeners.ListenerManager;
 
 import io.dropwizard.Configuration;
 import io.dropwizard.ConfiguredBundle;
+import io.dropwizard.lifecycle.ServerLifecycleListener;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -44,7 +49,7 @@ public abstract class SundialBundle<T extends Configuration> implements Configur
   }
 
   @Override
-  public void run(T configuration, Environment environment) throws Exception {
+  public void run(T configuration, final Environment environment) throws Exception {
 
     SundialConfiguration sundialConfiguration = getSundialConfiguration(configuration);
 
@@ -85,6 +90,19 @@ public abstract class SundialBundle<T extends Configuration> implements Configur
     environment.admin().addTask(new StopJobTask());
     environment.admin().addTask(new RemoveJobTask());
     environment.admin().addTask(new AddJobTask());
-  }
 
+    environment.lifecycle().addServerLifecycleListener(new ServerLifecycleListener() {
+      @Override
+      public void serverStarted(Server server) {
+        final ListenerManager listenerManager;
+        try {
+          listenerManager = SundialJobScheduler.getScheduler().getListenerManager();
+        } catch (SchedulerException e) {
+          throw new RuntimeException(e);
+        }
+
+        listenerManager.addTriggerListener(new MetricsReporter(environment.metrics()));
+      }
+    });
+  }
 }
