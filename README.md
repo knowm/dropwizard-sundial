@@ -17,6 +17,9 @@ environment.admin().addTask(new RemoveJobTask());
 environment.admin().addTask(new AddJobTask());
 ```
 
+To enable only some of the tasks, list the tasks you want enabled in the
+`tasks` configuration setting. If left unset, all tasks are enabled.
+
 ## In a Nutshell
 
 Sundial makes adding scheduled jobs to your Java application a walk in the park. Simply define jobs, define triggers, and start the Sundial scheduler. **dropwizard-sundial** makes integrating and configuring the job scheduler into dropwizard a snap.
@@ -63,7 +66,7 @@ public SundialConfiguration getSundialConfiguration() {
 }
 ```
 
-## Edit you app's Dropwizard YAML config file (default values are shown below except for `annotated-jobs-package-name`):
+## Edit you app's Dropwizard YAML config file (default values are shown below except for `annotated-jobs-package-name` and `tasks`):
 ```yml
 sundial:
   thread-pool-size: 10
@@ -73,6 +76,7 @@ sundial:
   start-scheduler-on-load: true
   global-lock-on-load: false
   annotated-jobs-package-name: com.foo.bar.jobs
+  tasks: [startjob, stopjob]
 ```
 
 ## Configure package name for `Job` classes containing `CronTrigger` and `SimpleTrigger` annotations:
