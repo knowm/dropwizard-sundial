@@ -16,6 +16,11 @@
  */
 package org.knowm.dropwizard.sundial;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import org.eclipse.jetty.server.Server;
 import org.knowm.dropwizard.sundial.tasks.AddCronJobTriggerTask;
 import org.knowm.dropwizard.sundial.tasks.AddJobTask;
@@ -33,6 +38,7 @@ import org.quartz.listeners.ListenerManager;
 import io.dropwizard.Configuration;
 import io.dropwizard.ConfiguredBundle;
 import io.dropwizard.lifecycle.ServerLifecycleListener;
+import io.dropwizard.servlets.tasks.Task;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -82,14 +88,25 @@ public abstract class SundialBundle<T extends Configuration> implements Configur
       environment.servlets().setInitParameter("annotated-jobs-package-name", sundialConfiguration.getAnnotatedJobsPackageName());
     }
 
-    environment.admin().addTask(new LockSundialSchedulerTask());
-    environment.admin().addTask(new UnlockSundialSchedulerTask());
-    environment.admin().addTask(new RemoveJobTriggerTask());
-    environment.admin().addTask(new AddCronJobTriggerTask());
-    environment.admin().addTask(new StartJobTask());
-    environment.admin().addTask(new StopJobTask());
-    environment.admin().addTask(new RemoveJobTask());
-    environment.admin().addTask(new AddJobTask());
+    Set<String> enabledTasks = sundialConfiguration.getTasks();
+    Map<String, Task> availableTasks = new HashMap<String, Task>();
+    for (Class<? extends Task> taskClass : Arrays.asList(
+      UnlockSundialSchedulerTask.class, LockSundialSchedulerTask.class, RemoveJobTriggerTask.class,
+      AddCronJobTriggerTask.class, StartJobTask.class, StopJobTask.class, RemoveJobTask.class, AddJobTask.class)
+    ) {
+      Task task = taskClass.newInstance();
+      availableTasks.put(task.getName(), task);
+    }
+    if (enabledTasks == null) {
+      enabledTasks = availableTasks.keySet();
+    }
+    if (!availableTasks.keySet().containsAll(enabledTasks)) {
+      enabledTasks.removeAll(availableTasks.keySet());
+      throw new IllegalArgumentException(String.format("Unknown tasks: %s. Available tasks: %s", enabledTasks, availableTasks.keySet()));
+    }
+    for (String task : enabledTasks) {
+      environment.admin().addTask(availableTasks.get(task));
+    }
 
     environment.lifecycle().addServerLifecycleListener(new ServerLifecycleListener() {
       @Override

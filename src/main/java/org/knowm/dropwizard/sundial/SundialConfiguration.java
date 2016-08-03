@@ -16,6 +16,8 @@
  */
 package org.knowm.dropwizard.sundial;
 
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -44,6 +46,9 @@ public class SundialConfiguration {
 
   @JsonProperty("annotated-jobs-package-name")
   private String annotatedJobsPackageName;
+
+  @JsonProperty("tasks")
+  private Set<String> tasks;
 
   public String getThreadPoolSize() {
 
@@ -113,4 +118,7 @@ public class SundialConfiguration {
     this.annotatedJobsPackageName = annotatedJobsPackageName;
   }
 
+  public Set<String> getTasks() {
+    return tasks;
+  }
 }
