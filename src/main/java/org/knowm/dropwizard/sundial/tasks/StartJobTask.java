@@ -55,6 +55,9 @@ public class StartJobTask extends Task {
       params.put(entry.getKey(), entry.getValue());
     }
 
+    if (!parameters.containsKey("JOB_NAME")) {
+        throw new IllegalArgumentException("No JOB_NAME specified");
+    }
     String jobName = (String) parameters.get("JOB_NAME").toArray()[0];
 
     SundialJobScheduler.startJob(jobName, params);
