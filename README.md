@@ -180,7 +180,7 @@ public class MyJob extends Job {
   @Override
   public void doRun() throws JobInterruptException {
 
-    // pull object from ServletContext, which was added in the apllication's run method
+    // pull object from ServletContext, which was added in the application's run method
     String myObject = (String) SundialJobScheduler.getServletContext().getAttribute("MyKey");
 
     logger.info("MyJob says: " + myObject);
