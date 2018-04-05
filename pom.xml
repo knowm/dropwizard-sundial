@@ -32,13 +32,13 @@
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/timmolter/dropwizard-sundial/issues</url>
+        <url>https://github.com/knowm/dropwizard-sundial/issues</url>
     </issueManagement>
 
     <scm>
-        <connection>scm:git:git@github.com:timmolter/dropwizard-sundial.git</connection>
-        <developerConnection>scm:git:git@github.com:timmolter/dropwizard-sundial.git</developerConnection>
-        <url>git@github.com:timmolter/dropwizard-sundial.git</url>
+        <connection>scm:git:git@github.com:knowm/dropwizard-sundial.git</connection>
+        <developerConnection>scm:git:git@github.com:knowm/dropwizard-sundial.git</developerConnection>
+        <url>git@github.com:knowm/dropwizard-sundial.git</url>
         <tag>HEAD</tag>
     </scm>
 
