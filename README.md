@@ -211,5 +211,5 @@ Visit [Sundial](https://github.com/timmolter/Sundial) to find out more about the
 
 
 ## Continuous Integration
-[![Build Status](https://travis-ci.org/timmolter/dropwizard-sundial.png?branch=master)](https://travis-ci.org/timmolter/dropwizard-sundial.png)  
-[Build History](https://travis-ci.org/timmolter/dropwizard-sundial/builds)  
+[![Build Status](https://travis-ci.org/knowm/dropwizard-sundial.png?branch=master)](https://travis-ci.org/timmolter/dropwizard-sundial.png)  
+[Build History](https://travis-ci.org/knowm/dropwizard-sundial/builds)  
