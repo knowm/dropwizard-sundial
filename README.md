@@ -71,7 +71,6 @@ public SundialConfiguration getSundialConfiguration() {
 sundial:
   thread-pool-size: 10
   shutdown-on-unload: true
-  wait-on-shutdown: false
   start-delay-seconds: 0
   start-scheduler-on-load: true
   global-lock-on-load: false

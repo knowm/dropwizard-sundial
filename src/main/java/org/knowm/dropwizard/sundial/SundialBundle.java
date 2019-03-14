@@ -69,9 +69,6 @@ public abstract class SundialBundle<T extends Configuration> implements Configur
     if (sundialConfiguration.getPerformShutdown() != null) {
       environment.servlets().setInitParameter("shutdown-on-unload", sundialConfiguration.getPerformShutdown());
     }
-    if (sundialConfiguration.getWaitOnShutdown() != null) {
-      environment.servlets().setInitParameter("wait-on-shutdown", sundialConfiguration.getWaitOnShutdown());
-    }
     if (sundialConfiguration.getStartDelay() != null) {
       environment.servlets().setInitParameter("start-delay-seconds", sundialConfiguration.getStartDelay());
     }

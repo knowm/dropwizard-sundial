@@ -1,29 +1,23 @@
 /**
- * Copyright 2015 Knowm Inc. (http://knowm.org) and contributors.
- * Copyright 2014-2015 Xeiam LLC (http://xeiam.com) and contributors.
+ * Copyright 2015 Knowm Inc. (http://knowm.org) and contributors. Copyright 2014-2015 Xeiam LLC
+ * (http://xeiam.com) and contributors.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * <p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
+ * except in compliance with the License. You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * <p>http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
+ * <p>Unless required by applicable law or agreed to in writing, software distributed under the
+ * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
 package org.knowm.dropwizard.sundial;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-/**
- * @author timmolter
- */
-
+/** @author timmolter */
 public class SundialConfiguration {
 
   @JsonProperty("thread-pool-size")
@@ -31,9 +25,6 @@ public class SundialConfiguration {
 
   @JsonProperty("shutdown-on-unload")
   private String performShutdown;
-
-  @JsonProperty("wait-on-shutdown")
-  private String waitOnShutdown;
 
   @JsonProperty("start-delay-seconds")
   private String startDelay;
@@ -68,16 +59,6 @@ public class SundialConfiguration {
   public void setPerformShutdown(String performShutdown) {
 
     this.performShutdown = performShutdown;
-  }
-
-  public String getWaitOnShutdown() {
-
-    return waitOnShutdown;
-  }
-
-  public void setWaitOnShutdown(String waitOnShutdown) {
-
-    this.waitOnShutdown = waitOnShutdown;
   }
 
   public String getStartDelay() {
