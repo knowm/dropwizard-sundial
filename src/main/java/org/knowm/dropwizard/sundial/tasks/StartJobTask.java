@@ -26,7 +26,7 @@ public class StartJobTask extends Task {
 
     logger.info(parameters.toString());
 
-    Map<String, Object> params = new HashMap<>();
+    Map<String, Object> params = new HashMap<String, Object>();
 
     for (Entry<String, List<String>> entry : parameters.entrySet()) {
       params.put(entry.getKey(), entry.getValue().get(0));

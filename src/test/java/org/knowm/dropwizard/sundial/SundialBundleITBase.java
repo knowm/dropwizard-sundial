@@ -2,7 +2,6 @@ package org.knowm.dropwizard.sundial;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.function.Consumer;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.Entity;
@@ -32,12 +31,12 @@ public class SundialBundleITBase {
     public static DropwizardAppRule<TestConfiguration> buildApp(
         String configFile, final Before before
     ) {
-        return new DropwizardAppRule<>(
+        return new DropwizardAppRule<TestConfiguration>(
             new DropwizardTestSupport<TestConfiguration>(
                 TestApp.class, ResourceHelpers.resourceFilePath(configFile)
             ) {
                 @Override
-                public void before() {
+                public void before() throws Exception {
                     super.before();
                     before.before(getEnvironment());
                 }
