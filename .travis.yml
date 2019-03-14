@@ -18,6 +18,7 @@ jdk:
 branches:
   only:
     - master
+    - develop
 
 env:
   global:
