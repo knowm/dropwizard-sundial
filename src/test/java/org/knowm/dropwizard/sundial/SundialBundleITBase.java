@@ -2,7 +2,7 @@ package org.knowm.dropwizard.sundial;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
@@ -21,17 +21,16 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.testing.DropwizardTestSupport;
 import io.dropwizard.testing.ResourceHelpers;
-import io.dropwizard.testing.junit.DropwizardAppRule;
 
 public class SundialBundleITBase {
     public interface Before {
         void before(Environment environment);
     }
 
-    public static DropwizardAppRule<TestConfiguration> buildApp(
+    public static DropwizardAppExtension<TestConfiguration> buildApp(
         String configFile, final Before before
     ) {
-        return new DropwizardAppRule<TestConfiguration>(
+        return new DropwizardAppExtension<TestConfiguration>(
             new DropwizardTestSupport<TestConfiguration>(
                 TestApp.class, ResourceHelpers.resourceFilePath(configFile)
             ) {
@@ -87,7 +86,7 @@ public class SundialBundleITBase {
 
     }
 
-    public static void startJob(DropwizardAppRule<TestConfiguration> app, Client client, String jobName) {
+    public static void startJob(DropwizardAppExtension<TestConfiguration> app, Client client, String jobName) {
         Response response = client.target(
             String.format(
                 "http://localhost:%d/%s/tasks/startjob?JOB_NAME=%s",
@@ -99,7 +98,7 @@ public class SundialBundleITBase {
         assertThat(response.getStatus()).isEqualTo(200);
     }
 
-    public static boolean stopJob(DropwizardAppRule<TestConfiguration> app, Client client, String jobName) {
+    public static boolean stopJob(DropwizardAppExtension<TestConfiguration> app, Client client, String jobName) {
         Response response = client.target(
             String.format(
                 "http://localhost:%d/%s/tasks/stopjob?JOB_NAME=%s",
@@ -111,7 +110,7 @@ public class SundialBundleITBase {
         return response.getStatus() == 200;
     }
 
-    public static int readTimerCount(DropwizardAppRule<TestConfiguration> app, Client client, String timerName) {
+    public static int readTimerCount(DropwizardAppExtension<TestConfiguration> app, Client client, String timerName) {
         Response response = client.target(
             String.format(
                 "http://localhost:%d/%s/metrics",

@@ -4,14 +4,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import io.dropwizard.client.JerseyClientBuilder;
 import io.dropwizard.setup.Environment;
-import io.dropwizard.testing.junit.DropwizardAppRule;
+import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import javax.ws.rs.client.Client;
 import org.junit.ClassRule;
 import org.junit.Test;
 
 public class SundialBundleIT extends SundialBundleITBase {
     @ClassRule
-    public static DropwizardAppRule<TestConfiguration> app = buildApp("test.yml", new Before() {
+    public static DropwizardAppExtension<TestConfiguration> app = buildApp("test.yml", new Before() {
         public void before(Environment environment) {
             client = new JerseyClientBuilder(environment).build("test");
         }
