@@ -1,6 +1,6 @@
 ## dropwizard-sundial
 
-Scheduled jobs in [Dropwizard](https://github.com/dropwizard/dropwizard) using [Sundial](https://github.com/timmolter/Sundial), a quartz fork.
+Scheduled jobs in [Dropwizard](https://github.com/dropwizard/dropwizard) using [Sundial](https://github.com/knowm/Sundial), a quartz fork.
 
 ## Note!!!
 
