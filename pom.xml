@@ -251,6 +251,7 @@
                 </executions>
                 <configuration>
                     <reuseForks>false</reuseForks>
+                    <skipITs>true</skipITs>
                 </configuration>
             </plugin>
         </plugins>
