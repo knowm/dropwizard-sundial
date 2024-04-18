@@ -225,7 +225,7 @@
                     <quiet>true</quiet>
                     <skip>false</skip>
                     <doclint>none</doclint>
-                    <source>6</source>
+                    <source>8</source>
                 </configuration>
             </plugin>
             <plugin>
