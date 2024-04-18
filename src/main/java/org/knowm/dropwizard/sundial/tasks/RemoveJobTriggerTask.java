@@ -1,11 +1,7 @@
 package org.knowm.dropwizard.sundial.tasks;
 
 import io.dropwizard.servlets.tasks.Task;
-
 import java.io.PrintWriter;
-
-import com.google.common.collect.ImmutableCollection;
-import com.google.common.collect.ImmutableMultimap;
 import java.util.List;
 import java.util.Map;
 import org.knowm.sundial.SundialJobScheduler;
@@ -15,9 +11,7 @@ import org.knowm.sundial.SundialJobScheduler;
  */
 public class RemoveJobTriggerTask extends Task {
 
-  /**
-   * Constructor
-   */
+  /** Constructor */
   public RemoveJobTriggerTask() {
 
     super("removejobtrigger");
@@ -32,6 +26,5 @@ public class RemoveJobTriggerTask extends Task {
 
       SundialJobScheduler.removeTrigger(triggerName);
     }
-
   }
 }

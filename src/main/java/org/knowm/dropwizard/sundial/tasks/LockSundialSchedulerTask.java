@@ -1,16 +1,12 @@
 package org.knowm.dropwizard.sundial.tasks;
 
 import io.dropwizard.servlets.tasks.Task;
-
 import java.io.PrintWriter;
-
 import java.util.List;
 import java.util.Map;
+import org.knowm.sundial.SundialJobScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.collect.ImmutableMultimap;
-import org.knowm.sundial.SundialJobScheduler;
 
 /**
  * @author timmolter
@@ -19,9 +15,7 @@ public class LockSundialSchedulerTask extends Task {
 
   private final Logger logger = LoggerFactory.getLogger(LockSundialSchedulerTask.class);
 
-  /**
-   * Constructor
-   */
+  /** Constructor */
   public LockSundialSchedulerTask() {
 
     super("locksundialscheduler");
@@ -33,7 +27,5 @@ public class LockSundialSchedulerTask extends Task {
     logger.info("Locking Sundial Scheduler...");
 
     SundialJobScheduler.lockScheduler();
-
   }
-
 }

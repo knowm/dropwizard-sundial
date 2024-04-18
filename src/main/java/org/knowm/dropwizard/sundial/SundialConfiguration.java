@@ -3,7 +3,9 @@ package org.knowm.dropwizard.sundial;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Set;
 
-/** @author timmolter */
+/**
+ * @author timmolter
+ */
 public class SundialConfiguration {
 
   @JsonProperty("thread-pool-size")

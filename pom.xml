@@ -116,17 +116,16 @@
         <dependency>
             <groupId>org.easymock</groupId>
             <artifactId>easymock</artifactId>
-            <version>4.2</version>
+            <version>4.3</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.2</version>
+            <version>5.9.3</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -253,6 +252,22 @@
                     <reuseForks>false</reuseForks>
                     <skipITs>true</skipITs>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify.fmt</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <version>2.21.1</version>
+                <configuration>
+                    <filesNamePattern>.*\.java</filesNamePattern>
+                    <skip>false</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--              <goal>format</goal>-->
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

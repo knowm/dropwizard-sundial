@@ -1,16 +1,12 @@
 package org.knowm.dropwizard.sundial.tasks;
 
 import io.dropwizard.servlets.tasks.Task;
-
 import java.io.PrintWriter;
-
 import java.util.List;
 import java.util.Map;
+import org.knowm.sundial.SundialJobScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.collect.ImmutableMultimap;
-import org.knowm.sundial.SundialJobScheduler;
 
 /**
  * @author timmolter
@@ -19,9 +15,7 @@ public class StopJobTask extends Task {
 
   private final Logger logger = LoggerFactory.getLogger(StopJobTask.class);
 
-  /**
-   * Constructor
-   */
+  /** Constructor */
   public StopJobTask() {
 
     super("stopjob");
@@ -35,6 +29,5 @@ public class StopJobTask extends Task {
     String jobName = parameters.get("JOB_NAME").get(0);
 
     SundialJobScheduler.stopJob(jobName);
-
   }
 }

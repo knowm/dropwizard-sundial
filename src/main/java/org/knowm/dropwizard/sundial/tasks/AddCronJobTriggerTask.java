@@ -1,16 +1,12 @@
 package org.knowm.dropwizard.sundial.tasks;
 
 import io.dropwizard.servlets.tasks.Task;
-
 import java.io.PrintWriter;
-
 import java.util.List;
 import java.util.Map;
+import org.knowm.sundial.SundialJobScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.collect.ImmutableMultimap;
-import org.knowm.sundial.SundialJobScheduler;
 
 /**
  * @author timmolter
@@ -19,9 +15,7 @@ public class AddCronJobTriggerTask extends Task {
 
   private final Logger logger = LoggerFactory.getLogger(AddCronJobTriggerTask.class);
 
-  /**
-   * Constructor
-   */
+  /** Constructor */
   public AddCronJobTriggerTask() {
 
     super("addcronjobtrigger");
@@ -32,11 +26,10 @@ public class AddCronJobTriggerTask extends Task {
 
     String triggerName = parameters.get("TRIGGER_NAME").get(0);
     String jobName = parameters.get("JOB_NAME").get(0);
-    String cronExpression =parameters.get("CRON_EXPRESSION").get(0);
+    String cronExpression = parameters.get("CRON_EXPRESSION").get(0);
 
     logger.debug(triggerName + " " + jobName + " " + cronExpression);
 
     SundialJobScheduler.addCronTrigger(triggerName, jobName, cronExpression);
-
   }
 }

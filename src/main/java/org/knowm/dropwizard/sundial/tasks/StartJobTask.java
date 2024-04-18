@@ -10,7 +10,9 @@ import org.knowm.sundial.SundialJobScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** @author timmolter */
+/**
+ * @author timmolter
+ */
 public class StartJobTask extends Task {
 
   private final Logger logger = LoggerFactory.getLogger(StartJobTask.class);
