@@ -1,26 +1,37 @@
 package org.knowm.dropwizard.sundial.tasks;
 
-import io.dropwizard.servlets.tasks.Task;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import org.knowm.sundial.SundialJobScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.dropwizard.servlets.tasks.Task;
 
 /**
  * @author timmolter
  */
 public class StartJobTask extends Task {
 
+  @FunctionalInterface
+  public interface JobStarter {
+    void start(String jobName, Map<String, Object> params) throws Exception;
+  }
+
   private final Logger logger = LoggerFactory.getLogger(StartJobTask.class);
+  private final JobStarter jobStarter;
 
-  /** Constructor */
   public StartJobTask() {
+    this(SundialJobScheduler::startJob);
+  }
 
+  public StartJobTask(JobStarter jobStarter) {
     super("startjob");
+    this.jobStarter = jobStarter;
   }
 
   @Override
@@ -39,6 +50,6 @@ public class StartJobTask extends Task {
     }
     String jobName = parameters.get("JOB_NAME").get(0);
 
-    SundialJobScheduler.startJob(jobName, params);
+    jobStarter.start(jobName, params);
   }
 }
