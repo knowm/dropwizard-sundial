@@ -48,14 +48,20 @@
 
     <repositories>
         <repository>
-            <id>sonatype-oss-public</id>
-            <url>https://oss.sonatype.org/content/groups/public/</url>
             <releases>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </releases>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
+            <id>central-portal-snapshots</id>
+            <name>Central Portal Snapshots</name>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+        </repository>
+        <repository>
+            <id>maven_central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
     </repositories>
 
@@ -130,20 +136,6 @@
 
     </dependencies>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-        <downloadUrl>https://oss.sonatype.org/content/groups/public/org/knowm/dropwizard-sundial</downloadUrl>
-    </distributionManagement>
-
     <profiles>
         <profile>
             <id>release-sign-artifacts</id>
@@ -166,6 +158,13 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
+                                <configuration>
+                                    <!-- This is necessary for gpg to not try to use the pinentry programs -->
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -246,6 +245,17 @@
                 <configuration>
                     <reuseForks>false</reuseForks>
                     <skipITs>true</skipITs>
+                </configuration>
+            </plugin>
+            <!-- for publishing to Maven Central Portal -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.10.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
                 </configuration>
             </plugin>
             <plugin>
