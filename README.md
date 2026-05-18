@@ -32,7 +32,7 @@ Add the **dropwizard-sundial** library as a dependency to your `pom.xml` file:
 <dependency>
     <groupId>org.knowm</groupId>
     <artifactId>dropwizard-sundial</artifactId>
-    <version>4.0.0</version>
+    <version>5.0.0</version>
 </dependency>
 ```
 
@@ -186,6 +186,39 @@ public class MyJob extends Job {
   }
 }
 ```
+
+## Metrics
+
+Dropwizard metrics are automatically collected for every job and trigger — no configuration required. Adding a job makes its timings available immediately.
+
+Metrics are recorded using a Dropwizard `Timer` and exposed via the admin metrics servlet. With `server.adminConnectors[0].port` set to `9090`:
+
+```bash
+curl http://localhost:9090/admin/metrics?pretty=true
+```
+
+Timers appear under the `timers` key, namespaced by job name:
+
+```json
+"org.knowm.dropwizard.sundial.MetricsReporter.job.MyJob": {
+  "count": 4,
+  "max": 0.417,
+  "mean": 0.176,
+  "min": 0.097,
+  "p50": 0.122,
+  "p95": 0.417,
+  "p99": 0.417,
+  "stddev": 0.121,
+  "m1_rate": 0.159,
+  "m5_rate": 0.190,
+  "m15_rate": 0.197,
+  "mean_rate": 0.103,
+  "duration_units": "seconds",
+  "rate_units": "calls/second"
+}
+```
+
+These metrics can be re-exported to systems like Prometheus and graphed in Grafana.
 
 ## Control Scheduler asynchronously via Curl
 
