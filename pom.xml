@@ -4,7 +4,7 @@
     <name>dropwizard-sundial</name>
     <groupId>org.knowm</groupId>
     <artifactId>dropwizard-sundial</artifactId>
-    <version>4.0.1-SNAPSHOT</version>
+    <version>5.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>Scheduled jobs in Dropwizard</description>
     <url>http://knowm.org/open-source/</url>
@@ -183,8 +183,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>17</source>
+                    <target>17</target>
                     <showDeprecation>true</showDeprecation>
                     <showWarnings>true</showWarnings>
                 </configuration>
@@ -220,7 +220,7 @@
                     <quiet>true</quiet>
                     <skip>false</skip>
                     <doclint>none</doclint>
-                    <source>8</source>
+                    <source>17</source>
                 </configuration>
             </plugin>
             <plugin>
@@ -270,7 +270,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <dropwizard.version>4.0.7</dropwizard.version>
+        <dropwizard.version>5.0.1</dropwizard.version>
     </properties>
 
 
