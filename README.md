@@ -2,24 +2,6 @@
 
 Scheduled jobs in [Dropwizard](https://github.com/dropwizard/dropwizard) using [Sundial](https://github.com/knowm/Sundial), a quartz fork.
 
-## Note!!!
-
-Before version `1.0.0-rc2.0`, you'll need to add the following lines to your `Application`'s `run()` method. From the 1.0.0-rc2.0 release and onwards, it will be automatically configured, but before that you need to explicitly add all the tasks yourself! 
-
-```java
-environment.admin().addTask(new LockSundialSchedulerTask());
-environment.admin().addTask(new UnlockSundialSchedulerTask());
-environment.admin().addTask(new RemoveJobTriggerTask());
-environment.admin().addTask(new AddCronJobTriggerTask());
-environment.admin().addTask(new StartJobTask());
-environment.admin().addTask(new StopJobTask());
-environment.admin().addTask(new RemoveJobTask());
-environment.admin().addTask(new AddJobTask());
-```
-
-To enable only some of the tasks, list the tasks you want enabled in the
-`tasks` configuration setting. If left unset, all tasks are enabled.
-
 ## In a Nutshell
 
 Sundial makes adding scheduled jobs to your Java application a walk in the park. Simply define jobs, define triggers, and start the Sundial scheduler. **dropwizard-sundial** makes integrating and configuring the job scheduler into dropwizard a snap.
@@ -101,6 +83,11 @@ public class SampleJob extends org.knowm.sundial.Job {
 ```java
 @SimpleTrigger(repeatInterval = 30, timeUnit = TimeUnit.SECONDS)
 ```
+```java
+@ManualTrigger
+```
+
+Use `@ManualTrigger` when you want the job registered with the scheduler on startup but never fired automatically — only when explicitly triggered via the admin task or `SundialJobScheduler.startJob()`.
 ## Alternatively, Put an XML File Called jobs.xml on Classpath
 
 If adding jobs and triggers this way, you should not use annotations.
